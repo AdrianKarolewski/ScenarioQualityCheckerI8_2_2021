@@ -7,10 +7,6 @@ import pl.put.poznan.sqc.scenario.Step;
 import java.util.ArrayList;
 
 
-public interface ScenarioAbstractClass{
-
+public interface ScenarioAbstractClass {
     public void calculate(Scenario scenario);
-
-
 }
-

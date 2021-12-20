@@ -6,11 +6,7 @@ import pl.put.poznan.sqc.scenario.Step;
 import java.util.ArrayList;
 
 public class StepsCount implements ScenarioAbstractClass {
-
-
     @Override
     public void calculate(Scenario scenario){
-
-
     }
 }
