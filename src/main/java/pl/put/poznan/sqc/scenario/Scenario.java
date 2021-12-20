@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.scenariofiles;
+package pl.put.poznan.sqc.scenario;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Scenario {
 
-
     @JsonProperty("title")
     protected String title;
     @JsonProperty("systemActor")
@@ -18,8 +17,6 @@ public class Scenario {
     protected ArrayList<Actor> actors;
     @JsonProperty("steps")
     protected ArrayList<Step> steps;
-
-
 
 
     public String getTitle() {
