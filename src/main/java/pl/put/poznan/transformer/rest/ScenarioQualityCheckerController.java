@@ -3,6 +3,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.ScenarioQualityChecker;
+import pl.put.poznan.transformer.scenariofiles.Scenario;
 
 import java.util.Arrays;
 
@@ -12,15 +13,13 @@ public class ScenarioQualityCheckerController {
 
     private static final Logger logger = LoggerFactory.getLogger(ScenarioQualityCheckerController.class);
 
-    @RequestMapping(method = RequestMethod.GET, path = "/steps-count/{filename}", produces = "application/json")
-    public String getStepsCount(@PathVariable String filename) {
+    @GetMapping(path = "/steps-count", produces = "application/json")
+    public Scenario getStepsCount(@RequestBody Scenario json) {
 
-        logger.debug(filename);
-
-        // perform the transformation, you should run your logic here, below is just a silly example
-//        ScenarioQualityChecker transformer = new ScenarioQualityChecker(transforms);
-
-        return "get steps count " + filename;
+        logger.debug(json.toString());
+        //Scenario scenarioQualityChecker = new Scenario(json.toString(), 25);
+        json.setTitle("Zmiana");
+        return json;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/keyword/{filename}", produces = "application/json")
