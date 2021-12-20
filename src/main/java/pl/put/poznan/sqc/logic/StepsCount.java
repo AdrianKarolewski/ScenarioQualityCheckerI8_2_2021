@@ -42,7 +42,6 @@ public class StepsCount implements ScenarioAbstractClass {
      */
     @Override
     public void calculate(Scenario scenario){
-
         if (scenario.getSteps().size() == 0){
             numberofsteps = 0;
         }
