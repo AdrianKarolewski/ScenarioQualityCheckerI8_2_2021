@@ -6,7 +6,7 @@ import pl.put.poznan.sqc.scenario.Step;
 /**
  * StepsCount class implementation
  */
-public class StepsCount implements ScenarioAbstractClass {
+public class StepsCount implements ScenarioInterface {
 
     private final String title;
     private Integer numberOfSteps = 0;

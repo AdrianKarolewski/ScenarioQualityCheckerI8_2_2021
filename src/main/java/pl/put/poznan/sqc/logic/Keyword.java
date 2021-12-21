@@ -6,7 +6,7 @@ import pl.put.poznan.sqc.scenario.Step;
 /**
  * Keyword counting class implementation
  */
-public class Keyword implements ScenarioAbstractClass {
+public class Keyword implements ScenarioInterface {
 
     private final String title;
     private Integer numberOfStepsWithKeywords = 0;
