@@ -3,34 +3,34 @@ package pl.put.poznan.sqc.logic;
 import pl.put.poznan.sqc.scenario.Scenario;
 import pl.put.poznan.sqc.scenario.Step;
 
-import java.util.ArrayList;
-
 /**
  * StepsCount class implementation
  */
 public class StepsCount implements ScenarioAbstractClass {
 
-    private int numberofsteps = 0;
+    private final String title;
+    private Integer numberOfSteps = 0;
 
     /**
      * StepsCount class constructor
      *
      * @param scenario in Scenario type
      */
-    public StepsCount(Scenario scenario){
+    public StepsCount(Scenario scenario) {
+        this.title = scenario.getTitle();
         calculate(scenario);
     }
 
     /**
-     * A method checking and counting substeps of each scenario step (and substep - recursively)
+     * A method checking and counting subSteps of each scenario step (and subStep - recursively)
      *
      * @param step in Step type
      */
-    private void checkSubsteps(Step step){
+    private void checkSubSteps(Step step) {
         if (step.getSubSteps().size() != 0) {
-            numberofsteps += step.getSubSteps().size();
-            for (Step subs : step.getSubSteps()){
-                checkSubsteps(subs);
+            numberOfSteps += step.getSubSteps().size();
+            for (Step subs : step.getSubSteps()) {
+                checkSubSteps(subs);
             }
         }
     }
@@ -41,15 +41,33 @@ public class StepsCount implements ScenarioAbstractClass {
      * @param scenario in Scenario type
      */
     @Override
-    public void calculate(Scenario scenario){
-        if (scenario.getSteps().size() == 0){
-            numberofsteps = 0;
-        }
-        else {
-            numberofsteps += scenario.getSteps().size();
-            for (Step s : scenario.getSteps()){
-                checkSubsteps(s);
+    public void calculate(Scenario scenario) {
+        if (scenario.getSteps().size() == 0) {
+            numberOfSteps = 0;
+        } else {
+            numberOfSteps += scenario.getSteps().size();
+            for (Step s : scenario.getSteps()) {
+                checkSubSteps(s);
             }
         }
     }
+
+    /**
+     * Getter for numberOfSteps private variable
+     *
+     * @return variable numberOfSteps integer value
+     */
+    public Integer getNumberOfSteps() {
+        return numberOfSteps;
+    }
+
+    /**
+     * Getter for title private variable
+     *
+     * @return variable title String value
+     */
+    public String getTitle() {
+        return title;
+    }
+
 }

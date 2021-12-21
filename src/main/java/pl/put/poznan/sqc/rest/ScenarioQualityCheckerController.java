@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.sqc.logic.Keyword;
 import pl.put.poznan.sqc.logic.NoActor;
-import pl.put.poznan.sqc.logic.SendScenerio;
+import pl.put.poznan.sqc.logic.SendScenario;
 import pl.put.poznan.sqc.logic.StepsCount;
 import pl.put.poznan.sqc.scenario.Scenario;
 
@@ -26,8 +26,7 @@ public class ScenarioQualityCheckerController {
     @GetMapping(path = "/steps-count", produces = "application/json")
     public StepsCount getStepsCount(@RequestBody Scenario json) {
         logger.debug(json.toString());
-        StepsCount stepsCount = new StepsCount(json);
-        return stepsCount;
+        return new StepsCount(json);
     }
 
     /**
@@ -39,8 +38,7 @@ public class ScenarioQualityCheckerController {
     @GetMapping(path = "/keyword", produces = "application/json")
     public Keyword getKeyword(@RequestBody Scenario json) {
         logger.debug(json.toString());
-        Keyword keyword = new Keyword(json);
-        return keyword;
+        return new Keyword(json);
     }
 
     /**
@@ -52,8 +50,7 @@ public class ScenarioQualityCheckerController {
     @GetMapping(path = "/no-actor", produces = "application/json")
     public NoActor getNoActor(@RequestBody Scenario json) {
         logger.debug(json.toString());
-        NoActor noActor = new NoActor(json);
-        return noActor;
+        return new NoActor();
     }
 
     /**
@@ -63,10 +60,9 @@ public class ScenarioQualityCheckerController {
      * @return numbered scenario (json format)
      */
     @GetMapping(path = "/send-scenario", produces = "application/json")
-    public SendScenerio getSendScenario(@RequestBody Scenario json) {
+    public SendScenario getSendScenario(@RequestBody Scenario json) {
         logger.debug(json.toString());
-        SendScenerio sendScenerio = new SendScenerio(json);
-        return sendScenerio;
+        return new SendScenario();
     }
 
 }

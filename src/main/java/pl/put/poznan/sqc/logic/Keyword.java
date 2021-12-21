@@ -3,35 +3,37 @@ package pl.put.poznan.sqc.logic;
 import pl.put.poznan.sqc.scenario.Scenario;
 import pl.put.poznan.sqc.scenario.Step;
 
-import java.util.ArrayList;
-
 /**
  * Keyword counting class implementation
  */
 public class Keyword implements ScenarioAbstractClass {
 
-    private int numberofstepswithkeywords = 0;
+    private final String title;
+    private Integer numberOfStepsWithKeywords = 0;
 
     /**
      * Keyword class constructor
      *
      * @param scenario in Scenario type
      */
-    public Keyword(Scenario scenario){ calculate(scenario); }
+    public Keyword(Scenario scenario) {
+        this.title = scenario.getTitle();
+        calculate(scenario);
+    }
 
     /**
-     * A method checking and counting keywords in substeps od each scenario step (and substep - recursively)
+     * A method checking and counting keywords in subSteps od each scenario step (and subStep - recursively)
      *
      * @param step in Step type
      */
-    private void checkSubsteps(Step step){
+    private void checkSubSteps(Step step) {
         if (step.getSubSteps().size() != 0) {
-            for (Step subs : step.getSubSteps()){
+            for (Step subs : step.getSubSteps()) {
                 String content[] = subs.getContent().split(" ");
-                if (content[0].equals("IF") || content[0].equals("ELSE") || (content[0].equals("FOR") && content[1].equals("EACH"))) {
-                    numberofstepswithkeywords += 1;
+                if (content[0].contains("IF") || content[0].contains("ELSE") || (content[0].equals("FOR") && content[1].contains("EACH"))) {
+                    numberOfStepsWithKeywords += 1;
                 }
-                checkSubsteps(subs);
+                checkSubSteps(subs);
             }
         }
     }
@@ -42,18 +44,35 @@ public class Keyword implements ScenarioAbstractClass {
      * @param scenario in Scenario type
      */
     @Override
-    public void calculate(Scenario scenario){
+    public void calculate(Scenario scenario) {
         if (scenario.getSteps().size() == 0) {
-            numberofstepswithkeywords = 0;
-        }
-        else {
+            numberOfStepsWithKeywords = 0;
+        } else {
             for (Step s : scenario.getSteps()) {
                 String content[] = s.getContent().split(" ");
-                if (content[0].equals("IF") || content[0].equals("ELSE") || (content[0].equals("FOR") && content[1].equals("EACH"))) {
-                    numberofstepswithkeywords += 1;
+                if (content[0].contains("IF") || content[0].contains("ELSE") || (content[0].equals("FOR") && content[1].contains("EACH"))) {
+                    numberOfStepsWithKeywords += 1;
                 }
-                checkSubsteps(s);
+                checkSubSteps(s);
             }
         }
+    }
+
+    /**
+     * Getter for numberOfStepsWithKeywords private variable
+     *
+     * @return variable numberOfStepsWithKeywords integer value
+     */
+    public Integer getNumberOfStepsWithKeywords() {
+        return numberOfStepsWithKeywords;
+    }
+
+    /**
+     * Getter for title private variable
+     *
+     * @return variable title String value
+     */
+    public String getTitle() {
+        return title;
     }
 }
