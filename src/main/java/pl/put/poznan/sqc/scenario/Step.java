@@ -16,6 +16,7 @@ public class Step {
      */
     @JsonProperty("content")
     private String content;
+
     /**
      *  List with all sub-steps for a given step
      */

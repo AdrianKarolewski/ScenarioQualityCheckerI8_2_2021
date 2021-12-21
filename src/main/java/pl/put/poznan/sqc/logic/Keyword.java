@@ -8,7 +8,13 @@ import pl.put.poznan.sqc.scenario.Step;
  */
 public class Keyword implements ScenarioInterface {
 
+    /**
+     * Title of return scenario
+     */
     private final String title;
+    /**
+     * Number of steps with keywords IF, ELSE and FOR EACH in a scenario
+     */
     private Integer numberOfStepsWithKeywords = 0;
 
     /**

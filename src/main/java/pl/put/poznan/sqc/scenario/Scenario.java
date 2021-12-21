@@ -20,7 +20,7 @@ public class Scenario {
      * System Actor of given scenario
      */
     @JsonProperty("systemActor")
-    protected String systemActor;
+    protected ArrayList<Actor> systemActor;
     /**
      * List with all actors occurring in a given scenario
      */
@@ -49,18 +49,18 @@ public class Scenario {
     }
 
     /**
-     * Getter for systemActor variable
-     * @return String This is systemActor variable
+     * Getter for systemActors variable
+     * @return ArrayList with systemActors variables
      */
-    public String getSystemActor() {
+    public ArrayList<Actor> getSystemActor() {
         return systemActor;
     }
 
     /**
-     *  Setter for systemActor variable
-     * @param systemActor This scenario new systemActor
+     *  Setter for systemActors variable
+     * @param systemActor New List with all systemActors for given scenario
      */
-    public void setSystemActor(String systemActor) {
+    public void setSystemActor(ArrayList<Actor> systemActor) {
         this.systemActor = systemActor;
     }
 
