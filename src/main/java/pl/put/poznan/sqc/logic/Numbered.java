@@ -17,7 +17,7 @@ public class Numbered implements ScenarioInterface {
     private static final Logger logger = LoggerFactory.getLogger(ScenarioQualityCheckerController.class);
 
     /**
-     * return scenario with numbered steps
+     * returned scenario with numbered steps
      */
     private final Scenario scenario;
 
@@ -51,7 +51,9 @@ public class Numbered implements ScenarioInterface {
         for (Step s : step.getSubSteps()) {
             subStepBeg = stepBeg + stepNum++ + ".";
             s.setContent(subStepBeg + " " + s.getContent());
-            checkSubSteps(s, subStepBeg);
+            if (s.getSubSteps().size() != 0) {
+                checkSubSteps(s, subStepBeg);
+            }
         }
     }
 
