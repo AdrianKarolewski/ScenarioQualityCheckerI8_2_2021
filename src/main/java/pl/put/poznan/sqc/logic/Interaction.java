@@ -95,6 +95,9 @@ public class Interaction implements ScenarioInterface {
             for (Actor actor : scenario.getActors()){
                 temp.add(actor.getName());
             }
+            for (Actor actor : scenario.getSystemActor()){
+                temp.add(actor.getName());
+            }
 
             for (Step s : scenario.getSteps()) {
                 String content[] = s.getContent().split(" ");
