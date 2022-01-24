@@ -46,28 +46,28 @@
       ]
     },
     {
-      "content": "Kupujący przekazuje należność Sprzedającemu",
+      "content": "Kupujący przekazuje należność Sprzedający",
       "subSteps": [
         {
-          "content":"System tworzy nową płatność przypisaną do danej aukcji",
-          "subSteps":[]
+          "content": "System tworzy nową płatność przypisaną do danej aukcji",
+          "subSteps": []
         },
         {
-          "content":"Płatność za dany produkt",
-          "subSteps":[
+          "content": "Płatność za dany produkt",
+          "subSteps": [
             {
-              "content":"Kupujący zostaje przekierowany na strone bankową",
-              "subSteps":[]
+              "content": "Kupujący zostaje przekierowany na strone bankową",
+              "subSteps": []
             },
             {
-              "content":"System odbiera potwierdzenie platności ze strony banku",
-              "subSteps":[]
+              "content": "System odbiera potwierdzenie platności ze strony banku",
+              "subSteps": []
             }
           ]
         },
         {
-          "content":"Sprzedający otrzymuje należność za sprzedany produkt",
-          "subSteps":[]
+          "content": "Sprzedający otrzymuje należność za sprzedany produkt",
+          "subSteps": []
         }
       ]
     },
