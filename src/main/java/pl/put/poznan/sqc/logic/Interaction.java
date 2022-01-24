@@ -34,14 +34,18 @@ public class Interaction implements ScenarioInterface {
      *
      * @return variable StepsWithInteractions List of Strings value
      */
-    public ArrayList<String> getStepsWithInteractions(){return StepsWithInteractions;}
+    public ArrayList<String> getStepsWithInteractions() {
+        return StepsWithInteractions;
+    }
 
     /**
      * Getter for title private variable
      *
      * @return variable title String value
      */
-    public String getTitle() { return title;}
+    public String getTitle() {
+        return title;
+    }
 
     /**
      * Interaction class constructor
@@ -56,12 +60,12 @@ public class Interaction implements ScenarioInterface {
     }
 
     /**
-     *  Interactions checking method fot substeps
+     * Interactions checking method for sub-steps and its sub-steps recursively
      *
-     * @param step     for which we check the sub-step
+     * @param step      for which we check the sub-step
      * @param ActorList list of the actor names
      */
-    public void checkSubSteps(Step step ,ArrayList<String> ActorList ) {
+    public void checkSubSteps(Step step, ArrayList<String> ActorList) {
         if (step.getSubSteps().size() != 0) {
             for (Step subs : step.getSubSteps()) {
                 String content[] = subs.getContent().split(" ");
@@ -92,18 +96,18 @@ public class Interaction implements ScenarioInterface {
             return;
         } else {
             ArrayList<String> temp = new ArrayList<>();
-            for (Actor actor : scenario.getActors()){
+            for (Actor actor : scenario.getActors()) {
                 temp.add(actor.getName());
             }
-            for (Actor actor : scenario.getSystemActor()){
+            for (Actor actor : scenario.getSystemActor()) {
                 temp.add(actor.getName());
             }
 
             for (Step s : scenario.getSteps()) {
                 String content[] = s.getContent().split(" ");
                 int checkValue = 0;
-                for (String Oneword : content){
-                    if (temp.contains(Oneword)){
+                for (String Oneword : content) {
+                    if (temp.contains(Oneword)) {
                         checkValue++;
                     }
                 }
@@ -119,7 +123,7 @@ public class Interaction implements ScenarioInterface {
     /**
      * Method connects visitor to class that implemented calculate method
      *
-     * @param v object that visits
+     * @param v        object that visits
      * @param scenario Scenario type variable
      */
     @Override
