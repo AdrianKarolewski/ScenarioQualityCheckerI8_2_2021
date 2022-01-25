@@ -1,16 +1,15 @@
 package pl.put.poznan.testing.mocks;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.junit.jupiter.api.Test;
 import pl.put.poznan.sqc.logic.Keyword;
-import pl.put.poznan.sqc.logic.NoActor;
-import pl.put.poznan.sqc.scenario.Actor;
 import pl.put.poznan.sqc.scenario.Scenario;
 import pl.put.poznan.sqc.scenario.Step;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class KeywordTest {
 
@@ -286,5 +285,4 @@ class KeywordTest {
         keyword.calculate(scenario);
         assertEquals(keyword.getNumberOfStepsWithKeywords(), 0);
     }
-
 }

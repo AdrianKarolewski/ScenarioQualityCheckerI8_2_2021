@@ -1,8 +1,5 @@
 package pl.put.poznan.testing.mocks;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.junit.jupiter.api.Test;
 import pl.put.poznan.sqc.logic.NoActor;
 import pl.put.poznan.sqc.scenario.Actor;
@@ -11,20 +8,24 @@ import pl.put.poznan.sqc.scenario.Step;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 public class NoActorTest {
     NoActor noActor;
+
     @Test
-    void getTitle()
-    {
+    void getTitle() {
         Scenario scenario = mock(Scenario.class);
         when(scenario.getTitle()).thenReturn("Title");
 
         noActor = new NoActor(scenario);
         assertEquals(noActor.getTitle(), "Title");
     }
+
     @Test
-    void emptyScenario()
-    {
+    void emptyScenario() {
         Scenario scenario = mock(Scenario.class);
         when(scenario.getSteps()).thenReturn(new ArrayList<Step>());
 
@@ -32,9 +33,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 0);
     }
+
     @Test
-    void allStepsHaveActor()
-    {
+    void allStepsHaveActor() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
         Actor actor = mock(Actor.class);
@@ -58,9 +59,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 0);
     }
+
     @Test
-    void stepWithoutActor()
-    {
+    void stepWithoutActor() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
         Actor actor = mock(Actor.class);
@@ -81,9 +82,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 1);
     }
+
     @Test
-    void subStepsHaveActor()
-    {
+    void subStepsHaveActor() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
 
@@ -125,9 +126,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 0);
     }
+
     @Test
-    void subStepWithoutActor()
-    {
+    void subStepWithoutActor() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
 
@@ -169,9 +170,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 1);
     }
+
     @Test
-    void subStepsWithoutActor()
-    {
+    void subStepsWithoutActor() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
 
@@ -213,9 +214,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 3);
     }
+
     @Test
-    void subStepsHaveActors()
-    {
+    void subStepsHaveActors() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
 
@@ -260,9 +261,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 0);
     }
+
     @Test
-    void conditionalSt()
-    {
+    void conditionalSt() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
 
@@ -301,9 +302,9 @@ public class NoActorTest {
         noActor.calculate(scenario);
         assertEquals(noActor.getStepsNoActor().size(), 0);
     }
+
     @Test
-    void subsubRec()
-    {
+    void subsubRec() {
         Scenario scenario = mock(Scenario.class);
         Step step = mock(Step.class);
 
